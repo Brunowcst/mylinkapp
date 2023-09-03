@@ -6,23 +6,51 @@ const Drawer = createDrawerNavigator();
 //Pages
 import Home from '../pages/Home'
 import MyLinks from '../pages/MyLinks'
+import CustomDrawer from '../components/CustomDrawer';
+
+//Icons
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function Routes() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+        drawerContent={props => <CustomDrawer {...props}/>}
+        screenOptions={{
+            headerShown: false,
+            drawerActiveBackgroundColor: '#5C1374',
+            drawerActiveTintColor: '#fff',
+            drawerInactiveTintColor: '#fff',
+            drawerLabelStyle: {
+                fontSize: 20,
+                marginLeft: -20
+            }
+        }}
+    >
         <Drawer.Screen
             name='Home'
             component={Home}
             options={{
-                headerShown:false,
+                drawerIcon: ({size}) => (
+                   <Icon
+                      name="home"
+                      size={size}
+                      color={'#fff'}
+                   />
+                ),
             }}
         />
-
+        
         <Drawer.Screen
             name='MyLinks'
             component={MyLinks}
             options={{
-                headerShown:false,
+                drawerIcon: ({size}) => (
+                   <Icon
+                      name="link"
+                      size={size}
+                      color={'#fff'}
+                   />
+                ),
             }}
         />
 
