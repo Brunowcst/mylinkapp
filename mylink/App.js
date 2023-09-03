@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import Routes from './src/routes/routes';
 import { NavigationContainer } from '@react-navigation/native';
 
