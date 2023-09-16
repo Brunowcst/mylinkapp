@@ -6,6 +6,8 @@ const Drawer = createDrawerNavigator();
 //Pages
 import Home from '../pages/Home'
 import MyLinks from '../pages/MyLinks'
+
+//Custom Drawer
 import CustomDrawer from '../components/CustomDrawer';
 
 //Icons
@@ -21,7 +23,7 @@ function Routes() {
             drawerActiveTintColor: '#fff',
             drawerInactiveTintColor: '#fff',
             drawerLabelStyle: {
-                fontSize: 20,
+                fontSize: 15,
                 marginLeft: -20
             }
         }}
