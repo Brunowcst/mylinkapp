@@ -51,6 +51,11 @@ export default function Home() {
         </ButtonLinkText>
       </ButtonLink>
 
+      <Text>
+        Teste
+      </Text>
+      
+
     </View>
   )
 }
