@@ -50,6 +50,9 @@ export default function Home() {
                 style={{color:'#fff'}}
                 placeholder='Cole seu link aqui'
                 placeholderTextColor={'rgba(255, 255, 255, 0.60)'}
+                autoCapitalize='none'
+                autoCorrect={false}
+                keyboardType='url'
               />
           </ContainerInput>
 
