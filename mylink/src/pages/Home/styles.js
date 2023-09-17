@@ -20,6 +20,7 @@ export const ContainerInput = styled.View`
     flex-direction: row;
     align-items: center;
     border-radius: 10px;
+    align-self: center;
 `;
 
 export const BoxIcon = styled.View`
@@ -35,27 +36,27 @@ export const BoxIcon = styled.View`
 `;
 
 export const Input = styled.TextInput`
-    width: 75%;
+    width: 80%;
     height: 50px;
     background-color: rgba(255, 255, 255, 0.15);
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     padding: 0px 10px;
     font-size: 17px;
-    
 `;
 
 export const ButtonLink = styled.TouchableOpacity`
-    margin-top: 50px;
-    width: 30%;
-    align-items: center;
+    margin: 30px 0px 50px 0px;
     justify-content: center;
-    height: 50px;
     background-color: #5C1374;
+    width: 35%;
     border-radius: 10px;
+    padding: 15px 30px;
+    align-self: center;
 `;
 
 export const ButtonLinkText = styled.Text`
+    text-align: center;
     color: #fff;
     font-weight: 600;
     font-size: 17px;
