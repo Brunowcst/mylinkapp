@@ -11,10 +11,10 @@ export default function index() {
   return (
     <ContentMenu>
       <ButtonMenu onPress={() => navigation.openDrawer()}>
-        <Icon name='menu' size={40} color={'#5C1374'}/>
+        <Icon name='menu' size={35} color={'#5C1374'}/>
       </ButtonMenu>
       <ButtonMenu>
-        <Icon name='share-social' size={40} color={'#5C1374'}/>
+        <Icon name='share-social' size={35} color={'#5C1374'}/>
       </ButtonMenu>
     </ContentMenu>
   )
