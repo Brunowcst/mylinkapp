@@ -16,67 +16,65 @@ export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
 
   function handleShortLink() {
-    // alert('Link:' + linkValue)
     setModalVisible(true)
   }
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={{ flex: 1, backgroundColor: '#222'}}>
+      
 
-          <StatusBarPage barStyle='light-content' backgroundColor='#222'/>
+    <View style={{ flex: 1, backgroundColor: '#222', opacity: !modalVisible ? 1 : .8}}>
 
-          <Menu />
+        <StatusBarPage barStyle='light-content' backgroundColor='#222'/>
 
-          <KeyboardAvoidingView
-            behavior={Platform.OS === 'android' ? 'position' : 'padding'}
-            enabled
-            keyboardVerticalOffset={10}
-          >
-            <IconF
-              name='external-link-alt'
-              size={100}
-              color={'#5C1374'}
-              style={{ paddingTop: 80, alignSelf: 'center' }}
+        <Menu/>
+
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'android' ? 'position' : 'padding'}
+          enabled
+          keyboardVerticalOffset={10}
+        >
+          <IconF
+            name='external-link-alt'
+            size={100}
+            color={'#5C1374'}
+            style={{ paddingTop: 80, alignSelf: 'center' }}
+          />
+
+          <ContainerContent>
+            <Title>EncurtaLinks</Title>
+            <SubTitle>Cole seu link para encurtar:</SubTitle>
+          </ContainerContent>
+
+          <ContainerInput>
+            <BoxIcon>
+              <Icon name='link' color={'#fff'} size={18} />
+            </BoxIcon>
+            <Input
+              style={{ color: '#fff' }}
+              placeholder='Cole seu link aqui'
+              placeholderTextColor={'rgba(255, 255, 255, 0.60)'}
+              autoCapitalize='none'
+              autoCorrect={false}
+              keyboardType='url'
+              value={linkValue}
+              onChangeText={(text) => setLinkValue(text)}
             />
+          </ContainerInput>
 
-            <ContainerContent>
-              <Title>EncurtaLinks</Title>
-              <SubTitle>Cole seu link para encurtar:</SubTitle>
-            </ContainerContent>
+          <ButtonLink onPress={handleShortLink}>
+            <ButtonLinkText >
+              Gerar link
+            </ButtonLinkText>
+          </ButtonLink>
 
-            <ContainerInput>
-
-              <BoxIcon>
-                <Icon name='link' color={'#fff'} size={18} />
-              </BoxIcon>
-
-              <Input
-                style={{ color: '#fff' }}
-                placeholder='Cole seu link aqui'
-                placeholderTextColor={'rgba(255, 255, 255, 0.60)'}
-                autoCapitalize='none'
-                autoCorrect={false}
-                keyboardType='url'
-                value={linkValue}
-                onChangeText={(text) => setLinkValue(text)}
-              />
-              
-            </ContainerInput>
-
-            <ButtonLink onPress={handleShortLink}>
-              <ButtonLinkText >
-                Gerar link
-              </ButtonLinkText>
-            </ButtonLink>
-
-          </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
 
         <Modal transparent visible={modalVisible} animationType='slide'>
-          <CustomModal closeModal={() => setModalVisible(false)}/>
+            <CustomModal closeModal={() => setModalVisible(false)}/>
         </Modal>
 
-      </View>
+    </View>
     </TouchableWithoutFeedback>
   );
 }
