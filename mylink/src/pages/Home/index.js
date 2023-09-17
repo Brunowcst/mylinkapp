@@ -38,9 +38,10 @@ export default function Home() {
           <BoxIcon>
             <Icon name='link' color={'#fff'} size={18}/>
           </BoxIcon>
-          <Input 
+          <Input
+            style={{color:'#fff'}}
             placeholder='Cole seu link aqui'
-            placeholderTextColor={'#fff'}
+            placeholderTextColor={'rgba(255, 255, 255, 0.60)'}
           />
       </ContainerInput>
 
