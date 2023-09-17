@@ -24,6 +24,7 @@ export default function Home() {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'android' ? 'position' : 'padding'}
           enabled
+          keyboardVerticalOffset={10}
         >
           <IconF
             name='external-link-alt'

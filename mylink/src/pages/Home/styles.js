@@ -26,7 +26,7 @@ export const ContainerInput = styled.View`
 export const BoxIcon = styled.View`
     align-items: center;
     justify-content: center;
-    width: 15%;
+    width: 16%;
     height: 50px;
     color: #fff;
     background-color: rgba(255, 255, 255, 0.15);
@@ -36,7 +36,7 @@ export const BoxIcon = styled.View`
 `;
 
 export const Input = styled.TextInput`
-    width: 80%;
+    width: 75%;
     height: 50px;
     background-color: rgba(255, 255, 255, 0.15);
     border-bottom-right-radius: 10px;
@@ -49,7 +49,7 @@ export const ButtonLink = styled.TouchableOpacity`
     margin: 30px 0px 50px 0px;
     justify-content: center;
     background-color: #5C1374;
-    width: 35%;
+    width: 40%;
     border-radius: 10px;
     padding: 15px 30px;
     align-self: center;
