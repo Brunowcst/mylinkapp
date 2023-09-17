@@ -1,4 +1,4 @@
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View, TouchableWithoutFeedback } from 'react-native'
 import React from 'react'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -11,7 +11,9 @@ export default function CustomModal({closeModal}) {
 
   return (
     <ModalContainer>
-          <View style={{flex:1}}>
+          <TouchableWithoutFeedback onPress={closeModal}>
+            <View style={{flex:1}}/>
+          </TouchableWithoutFeedback>
             <Container>
 
               <HeaderModal>
@@ -46,7 +48,6 @@ export default function CustomModal({closeModal}) {
               </LinkContainer>
 
             </Container>
-          </View>
     </ModalContainer>
   )
 }
