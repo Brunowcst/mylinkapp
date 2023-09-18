@@ -1,5 +1,6 @@
 import { View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Modal } from 'react-native'
 import React, { useState } from 'react'
+import { BlurView } from 'expo-blur'
 
 import StatusBarPage from '../../components/StatusBar'
 import Menu from '../../components/Menu'
@@ -22,13 +23,12 @@ export default function Home() {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       
-
-    <View style={{ flex: 1, backgroundColor: '#222', opacity: !modalVisible ? 1 : .8}}>
+    <View style={{ flex: 1, backgroundColor: '#222'}}>
 
         <StatusBarPage barStyle='light-content' backgroundColor='#222'/>
 
         <Menu/>
-
+        
         <KeyboardAvoidingView
           behavior={Platform.OS === 'android' ? 'position' : 'padding'}
           enabled
@@ -63,16 +63,21 @@ export default function Home() {
           </ContainerInput>
 
           <ButtonLink onPress={handleShortLink}>
-            <ButtonLinkText >
-              Gerar link
-            </ButtonLinkText>
+              <ButtonLinkText >
+                Gerar link
+              </ButtonLinkText>
           </ButtonLink>
 
         </KeyboardAvoidingView>
 
-        <Modal transparent visible={modalVisible} animationType='slide'>
-            <CustomModal closeModal={() => setModalVisible(false)}/>
-        </Modal>
+        <BlurView 
+          intensity={modalVisible ? 7 : 0}
+          style={modalVisible ? {height: '100%', width: '100%', position: 'absolute', top: 0, left: 0} : null}
+        >
+          <Modal transparent visible={modalVisible} animationType='slide'>
+              <CustomModal closeModal={() => setModalVisible(false)}/>
+          </Modal>
+        </BlurView>
 
     </View>
     </TouchableWithoutFeedback>
