@@ -19,18 +19,19 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [linkValue, setLinkValue] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const [shortLink, setShortLink] = useState('')
+  const [data, setData] = useState('')
 
   async function handleShortLink() {
 
     setLoading(true)
 
     try {
-      const shortUrl = await shortenUrl(linkValue)
+      const data = await shortenUrl(linkValue)
       setLoading(false)
       setModalVisible(true)
       Keyboard.dismiss()
-      setShortLink(shortUrl)
+      setData(data)
+      setLinkValue('')
     } catch (error) {
       alert(error)
       Keyboard.dismiss()
@@ -98,7 +99,7 @@ export default function Home() {
           style={modalVisible ? {height: '100%', width: '100%', position: 'absolute', top: 0, left: 0} : null}
         >
           <Modal transparent visible={modalVisible} animationType='slide'>
-              <CustomModal longUrl={linkValue} shortUrl={shortLink} closeModal={() => setModalVisible(false)}/>
+              <CustomModal data={data} closeModal={() => setModalVisible(false)}/>
           </Modal>
         </BlurView>
 
