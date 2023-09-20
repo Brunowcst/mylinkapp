@@ -8,10 +8,10 @@ import IconCopy from 'react-native-vector-icons/Octicons'
 
 import { ModalContainer, Container, HeaderModal, LinkContainer, Title, LongUrl, ShortLinkArea, ShortUrl } from './styles'
 
-export default function CustomModal({closeModal}) {
+export default function CustomModal({closeModal, shortUrl, longUrl}) {
 
   const copyFunction = async () => {
-    let text = await Clipboard.setStringAsync('testecopy')
+    let text = await Clipboard.setStringAsync(shortUrl)
     alert(text)
   }
 
@@ -61,12 +61,12 @@ export default function CustomModal({closeModal}) {
                   </Title>
 
                   <LongUrl>
-                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                    {longUrl}
                   </LongUrl>
 
                   <ShortLinkArea activeOpacity={1} onPress={copyFunction}>
                     <ShortUrl numberOfLines={1}>
-                      kkkkkkkkkkkkkkk
+                      {shortUrl}
                     </ShortUrl>
                     <IconCopy name='copy' size={20} color={'#5C1374'}/>
                   </ShortLinkArea>
