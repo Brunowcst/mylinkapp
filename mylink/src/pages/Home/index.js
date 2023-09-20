@@ -1,4 +1,4 @@
-import { View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Modal } from 'react-native'
+import { View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Modal, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import { BlurView } from 'expo-blur'
 
@@ -16,13 +16,18 @@ import { shortenUrl } from '../../services/api'
  
 export default function Home() {
 
+  const [loading, setLoading] = useState(false)
   const [linkValue, setLinkValue] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [shortLink, setShortLink] = useState('')
 
   async function handleShortLink() {
+
+    setLoading(true)
+
     try {
       const shortUrl = await shortenUrl(linkValue)
+      setLoading(false)
       setModalVisible(true)
       Keyboard.dismiss()
       setShortLink(shortUrl)
@@ -30,7 +35,9 @@ export default function Home() {
       alert(error)
       Keyboard.dismiss()
       setLinkValue('')
+      setLoading(false)
     }
+
   }
   
   return (
@@ -76,9 +83,12 @@ export default function Home() {
           </ContainerInput>
 
           <ButtonLink onPress={handleShortLink}>
-              <ButtonLinkText >
-                Gerar link
-              </ButtonLinkText>
+              {loading ? (<ActivityIndicator color={'#fff'}/>) 
+              :(
+                <ButtonLinkText >
+                  Gerar link
+                </ButtonLinkText>
+              )}
           </ButtonLink>
 
         </KeyboardAvoidingView>
