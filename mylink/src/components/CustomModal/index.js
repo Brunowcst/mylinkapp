@@ -11,8 +11,8 @@ import { ModalContainer, Container, HeaderModal, LinkContainer, Title, LongUrl, 
 export default function CustomModal({closeModal, data}) {
 
   const copyFunction = async () => {
-    let text = await Clipboard.setStringAsync(shortUrl)
-    alert(text)
+    let text = await Clipboard.setStringAsync(data.link)
+    // alert(text)
   }
 
   async function handleShare() {
