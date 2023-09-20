@@ -11,15 +11,28 @@ import { ContainerContent, Title, SubTitle, ContainerInput, Input, BoxIcon, Butt
 import Icon from 'react-native-vector-icons/Feather'
 import IconF from 'react-native-vector-icons/FontAwesome5'
 
+//API
+import { shortenUrl } from '../../services/api'
+ 
 export default function Home() {
 
   const [linkValue, setLinkValue] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [shortLink, setShortLink] = useState('')
 
-  function handleShortLink() {
-    setModalVisible(true)
+  async function handleShortLink() {
+    try {
+      const shortUrl = await shortenUrl(linkValue)
+      setModalVisible(true)
+      Keyboard.dismiss()
+      setShortLink(shortUrl)
+    } catch (error) {
+      alert(error)
+      Keyboard.dismiss()
+      setLinkValue('')
+    }
   }
-
+  
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       
@@ -75,7 +88,7 @@ export default function Home() {
           style={modalVisible ? {height: '100%', width: '100%', position: 'absolute', top: 0, left: 0} : null}
         >
           <Modal transparent visible={modalVisible} animationType='slide'>
-              <CustomModal closeModal={() => setModalVisible(false)}/>
+              <CustomModal longUrl={linkValue} shortUrl={shortLink} closeModal={() => setModalVisible(false)}/>
           </Modal>
         </BlurView>
 
