@@ -8,7 +8,7 @@ import IconCopy from 'react-native-vector-icons/Octicons'
 
 import { ModalContainer, Container, HeaderModal, LinkContainer, Title, LongUrl, ShortLinkArea, ShortUrl } from './styles'
 
-export default function CustomModal({closeModal, shortUrl, longUrl}) {
+export default function CustomModal({closeModal, data}) {
 
   const copyFunction = async () => {
     let text = await Clipboard.setStringAsync(shortUrl)
@@ -18,7 +18,7 @@ export default function CustomModal({closeModal, shortUrl, longUrl}) {
   async function handleShare() {
     try {
       const result = await Share.share({
-        message:`Link encurtado: kkkkkkkkkteste`
+        message:`Link encurtado: ${data.link}`
       })
 
       if(result.action === Share.sharedAction) {
@@ -61,12 +61,12 @@ export default function CustomModal({closeModal, shortUrl, longUrl}) {
                   </Title>
 
                   <LongUrl>
-                    {longUrl}
+                    {data.long_url}
                   </LongUrl>
 
                   <ShortLinkArea activeOpacity={1} onPress={copyFunction}>
                     <ShortUrl numberOfLines={1}>
-                      {shortUrl}
+                      {data.link}
                     </ShortUrl>
                     <IconCopy name='copy' size={20} color={'#5C1374'}/>
                   </ShortLinkArea>
