@@ -26,7 +26,7 @@ export const ContainerInput = styled.View`
 export const BoxIcon = styled.View`
     align-items: center;
     justify-content: center;
-    width: 16%;
+    width: 17%;
     height: 50px;
     color: #fff;
     background-color: rgba(255, 255, 255, 0.15);
