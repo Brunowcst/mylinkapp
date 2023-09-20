@@ -16,8 +16,7 @@ async function shortenUrl(longUrl) {
 
         if(response.ok) {
             const data = await response.json()
-            const link = data.link
-            return link
+            return data
         }
     } catch (error) {
         console.log(error)
