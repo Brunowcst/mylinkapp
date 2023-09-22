@@ -34,6 +34,10 @@ export default function MyLinks() {
     setModalVisible(true)
   }
 
+  function handleDelete(id) {
+    console.log('item deletado')
+  }
+
   return (
     <Container>
       <Menu/>
@@ -49,7 +53,7 @@ export default function MyLinks() {
       <ListLinks
         data={links}
         keyExtractor={ (item) => String(item.id)}
-        renderItem={ ({item}) => <ListItem data={item} selectedItem={selectedItem}/>}
+        renderItem={ ({item}) => <ListItem data={item} selectedItem={selectedItem} handleDelete={handleDelete}/>}
         contentContainerStyle={{paddingBottom:20}}
         showsHorizontalScrollIndicator={false}
       />

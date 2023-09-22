@@ -10,7 +10,7 @@ export default function ListItem({data, selectedItem, handleDelete}) {
 
   function rightAction() {
     return (
-      <ActionContainer>
+      <ActionContainer onPress={() => handleDelete(data.id)}>
         <IconTrash name='trash' size={25} color={'#fff'}/>
       </ActionContainer>
     )
