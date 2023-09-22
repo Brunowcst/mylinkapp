@@ -16,6 +16,7 @@ export default function CustomModal({closeModal, data}) {
   }
 
   async function handleShare() {
+    
     try {
       const result = await Share.share({
         message:`Link encurtado: ${data.link}`
