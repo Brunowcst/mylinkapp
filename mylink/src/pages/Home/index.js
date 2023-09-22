@@ -13,6 +13,7 @@ import IconF from 'react-native-vector-icons/FontAwesome5'
 
 //API
 import { shortenUrl } from '../../services/api'
+import { saveLinks } from '../../utils/storeLinks'
  
 export default function Home() {
 
@@ -29,6 +30,9 @@ export default function Home() {
       const data = await shortenUrl(linkValue)
       setLoading(false)
       setModalVisible(true)
+
+      saveLinks('links', data)
+
       Keyboard.dismiss()
       setData(data)
       setLinkValue('')
