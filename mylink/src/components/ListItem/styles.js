@@ -10,11 +10,19 @@ export const Container = styled.TouchableOpacity`
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    margin-bottom: 20px;
+    margin: 10px 50px;
 `;
 
 export const Link = styled.Text`
-    flex: 1;
     color: #fff;
     font-size: 18px;
+`;
+
+export const ActionContainer = styled.TouchableOpacity`
+    width: 15%;
+    background-color: #FF5555;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    margin: 10px 10px;
 `;
