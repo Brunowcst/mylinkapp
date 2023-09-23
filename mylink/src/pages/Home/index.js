@@ -24,6 +24,11 @@ export default function Home() {
 
   async function handleShortLink() {
 
+    if(linkValue == '') {
+      alert('É necessário passar um link válido.')
+      return
+    }
+
     setLoading(true)
 
     try {
@@ -37,7 +42,7 @@ export default function Home() {
       setData(data)
       setLinkValue('')
     } catch (error) {
-      alert(error)
+      console.log(error)
       Keyboard.dismiss()
       setLinkValue('')
       setLoading(false)
