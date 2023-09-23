@@ -7,7 +7,7 @@ import StatusBarPage from '../../components/StatusBar'
 import ListItem from '../../components/ListItem'
 import CustomModal from '../../components/CustomModal'
 
-import { Container, Title, ListLinks } from './styles'
+import { Container, Title, ListLinks, WarningText } from './styles'
 
 import { getLinks, deleteLinks } from '../../utils/storeLinks'
 import { useIsFocused } from '@react-navigation/native'
@@ -24,8 +24,7 @@ export default function MyLinks() {
       const result = await getLinks('links');
       setLinks(result);
     }
-
-    console.log(links)
+    // console.log(links)
 
     getLinksSave();
 
@@ -54,9 +53,9 @@ export default function MyLinks() {
       </Title>
 
       {links.length === 0 && (
-        <Text>
-          Nenhum link.
-        </Text>
+        <WarningText>
+          Nenhum link salvo.
+        </WarningText>
       )}
 
       <ListLinks
