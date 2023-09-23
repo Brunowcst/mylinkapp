@@ -16,3 +16,11 @@ export const Title = styled.Text`
 export const ListLinks = styled.FlatList`
     margin-top: 40px;
 `;
+
+export const WarningText = styled.Text`
+    align-self: center;
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 40px;
+`;
