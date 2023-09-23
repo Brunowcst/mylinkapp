@@ -14,6 +14,7 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Link = styled.Text`
+    flex: 1;
     color: #fff;
     font-size: 18px;
 `;
