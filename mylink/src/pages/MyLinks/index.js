@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Modal } from 'react-native'
+import { Modal, Text, View } from 'react-native'
 import { BlurView } from 'expo-blur'
 
 import Menu from '../../components/Menu'
@@ -9,7 +9,7 @@ import CustomModal from '../../components/CustomModal'
 
 import { Container, Title, ListLinks } from './styles'
 
-import { getLinks } from '../../utils/storeLinks'
+import { getLinks, deleteLinks } from '../../utils/storeLinks'
 import { useIsFocused } from '@react-navigation/native'
 
 export default function MyLinks() {
@@ -25,6 +25,8 @@ export default function MyLinks() {
       setLinks(result);
     }
 
+    console.log(links)
+
     getLinksSave();
 
   }, [isFocused]) 
@@ -34,8 +36,9 @@ export default function MyLinks() {
     setModalVisible(true)
   }
 
-  function handleDelete(id) {
-    console.log('item deletado')
+  async function handleDelete(id) {
+    const result = await deleteLinks(links, id)
+    setLinks(result)
   }
 
   return (
@@ -50,15 +53,20 @@ export default function MyLinks() {
         Meus Links
       </Title>
 
+      {links.length === 0 && (
+        <Text>
+          Nenhum link.
+        </Text>
+      )}
+
       <ListLinks
         data={links}
-        keyExtractor={ (item) => String(item.id)}
+        keyExtractor={ (item) => String(String(item.id))}
         renderItem={ ({item}) => <ListItem data={item} selectedItem={selectedItem} handleDelete={handleDelete}/>}
         contentContainerStyle={{paddingBottom:20}}
         showsHorizontalScrollIndicator={false}
       />
-
-      <BlurView 
+      <BlurView
         intensity={modalVisible ? 7 : 0}
         style={modalVisible ? {height: '100%', width: '100%', position: 'absolute', top: 0, left: 0} : null}
       >
