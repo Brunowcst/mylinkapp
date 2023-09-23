@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Modal, Text, View } from 'react-native'
+import { Modal, ActivityIndicator} from 'react-native'
 import { BlurView } from 'expo-blur'
 
 import Menu from '../../components/Menu'
@@ -18,14 +18,15 @@ export default function MyLinks() {
   const [data, setData] = useState({});
   const [links, setLinks] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getLinksSave() {
       const result = await getLinks('links');
       setLinks(result);
+      setLoading(false);
     }
-    // console.log(links)
-
+    
     getLinksSave();
 
   }, [isFocused]) 
@@ -52,7 +53,11 @@ export default function MyLinks() {
         Meus Links
       </Title>
 
-      {links.length === 0 && (
+      {loading && (
+        <ActivityIndicator size={50} color={'#5C1374'} style={{marginTop: 40}}/>
+      )}
+
+      {!loading && links.length === 0 && (
         <WarningText>
           Nenhum link salvo.
         </WarningText>
