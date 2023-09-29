@@ -24,6 +24,6 @@ Após criar uma conta, gere uma chava de acesso para utilizar a api.
 
 Depois de gerar a chave, crie um arquivo .env na raiz do diretório com os seguintes campos:
 ```
-API_KEY="susachavegerada"
+API_KEY="suachavegerada"
 DEBUG=true
 ```
