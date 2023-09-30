@@ -20,7 +20,7 @@ cd mylink
 npm install
 ```
 ## É necessário ter uma conta no [Bitly](https://bitly.com/) para utilizar a api.
-Após criar uma conta, gere uma chava de acesso para utilizar a api.
+Após criar uma conta, gere uma chave de acesso para utilizar a api.
 
 Depois de gerar a chave, crie um arquivo .env na raiz do diretório com os seguintes campos:
 ```
